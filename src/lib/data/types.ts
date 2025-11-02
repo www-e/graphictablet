@@ -24,6 +24,27 @@ export const ProductImageSchema = z.object({
 export type ProductImage = z.infer<typeof ProductImageSchema>
 
 /**
+ * Device Compatibility Schema
+ */
+export const DeviceCompatibilitySchema = z.object({
+  computers: z.object({
+    windows: z.string(),
+    mac: z.string(),
+    linux: z.string().optional(),
+  }).optional(),
+  tablets: z.object({
+    android: z.string(),
+    ios: z.string(),
+  }).optional(),
+  phones: z.object({
+    android: z.string(),
+    ios: z.string(),
+  }).optional(),
+})
+
+export type DeviceCompatibility = z.infer<typeof DeviceCompatibilitySchema>
+
+/**
  * Main Product Schema
  * Validates product data structure
  */
@@ -38,6 +59,10 @@ export const ProductSchema = z.object({
   images: z.array(ProductImageSchema).min(1, "At least 1 image required"),
   specifications: z.array(ProductSpecSchema).min(3, "At least 3 specs required"),
   keyFeatures: z.array(z.string()).min(2, "At least 2 key features"), // Max 3 bullets
+  freeDelivery: z.boolean().default(false),
+  deviceCompatibility: DeviceCompatibilitySchema.optional(),
+  usageScenarios: z.array(z.string()).optional(),
+  teacherFriendly: z.boolean().default(false),
   inStock: z.boolean().default(true),
   createdAt: z.date().optional(),
 })

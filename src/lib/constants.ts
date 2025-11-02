@@ -26,7 +26,17 @@ export const WHATSAPP_PHONE_FORMATTED = process.env.NEXT_PUBLIC_WHATSAPP_PHONE_F
  */
 export function generateWhatsAppLink(productName: string, productPrice: string): string {
   const message = encodeURIComponent(
-    `السلام عليكم ورحمة الله وبركاته\n\nأود الاستفسار عن: ${productName}\nالسعر: ${productPrice} جنيه\n\nهل متوفر حالياً؟`
+    `السلام عليكم ورحمة الله وبركاته
+
+أرغب في طلب المنتج التالي:
+
+📱 المنتج: ${productName}
+💰 السعر: ${productPrice} جنيه
+🚚 الشحن: مجاني لجميع أنحاء مصر
+
+الرجاء التأكد من التوفر وإرسال طرق الدفع المتاحة
+
+بارك الله فيكم`
   )
   return `https://wa.me/${WHATSAPP_PHONE}?text=${message}`
 }
@@ -61,9 +71,6 @@ export const ROUTES = {
   HOME: "/",
   PRODUCTS: "/products",
   PRODUCT_DETAIL: (id: string) => `/products/${id}`,
-  ABOUT: "/about",
-  CONTACT: "/contact",
-  WELCOME: "/welcome",
 } as const
 
 // ============================================

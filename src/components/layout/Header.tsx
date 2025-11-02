@@ -2,83 +2,65 @@
 
 import React, { useState } from "react"
 import Link from "next/link"
-import { ROUTES, SITE_NAME } from "@/lib/constants"
+import { ROUTES} from "@/lib/constants"
 import { Icon } from "@/components/icons/Icons"
 import { NavigationLinks } from "./Navigation"
-import { Button } from "@/components/common/Button"
 
-/**
- * Header Component
- * Top navigation with logo, menu, and mobile burger
- */
 export const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-md border-b border-gray-200">
-      <div className="container mx-auto px-4 py-4 md:py-6">
-        {/* Desktop & Mobile Layout */}
-        <div className="flex items-center justify-between">
-          {/* Logo/Site Name */}
-          <Link href={ROUTES.HOME} className="flex items-center gap-2">
+    <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/95 border-b border-gray-200/50 shadow-sm">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo/Site Name - Simplified Design */}
+          <Link
+            href={ROUTES.HOME}
+            className="flex items-center gap-3 group"
+          >
             <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
               <Icon name="grid" size="lg" className="text-white" />
             </div>
-            <div className="hidden md:flex flex-col">
-              <h1 className="font-aqsa text-xl md:text-2xl font-bold text-blue-600">
-                {SITE_NAME}
+            <div>
+              <h1 className="text-lg md:text-xl font-bold text-blue-700 leading-tight">
+                التابلت التفاعلي
               </h1>
-              <p className="text-xs text-gray-500">أجهزة الرسم الاحترافية</p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
+          <nav className="hidden md:flex items-center">
             <NavigationLinks />
-          </div>
+          </nav>
 
-          {/* Right Section - Search & Mobile Menu Toggle */}
-          <div className="flex items-center gap-4">
-            {/* Search Button */}
-            <Button
-              variant="ghost"
-              size="sm"
-              icon="search"
-              className="hidden md:flex"
-              aria-label="بحث"
-            >
-              بحث
-            </Button>
-
-            {/* Mobile Menu Toggle */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
-              aria-label="قائمة"
-            >
-              <Icon name={mobileMenuOpen ? "close" : "menu"} size="lg" variant="primary" />
-            </button>
-          </div>
+          {/* Mobile Menu Toggle */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            aria-label="قائمة"
+          >
+            <Icon
+              name={mobileMenuOpen ? "close" : "menu"}
+              size="lg"
+              className="text-gray-700"
+            />
+          </button>
         </div>
 
         {/* Mobile Navigation Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pt-4 border-t border-gray-200 animate-in fade-in slide-in-from-top-2">
-            <NavigationLinks isOpen={true} className="flex-col gap-2" />
-            <div className="mt-4 pt-4 border-t border-gray-200">
-              <Button
-                variant="outline"
-                size="sm"
-                fullWidth
-                icon="search"
-                className="w-full"
-              >
-                بحث
-              </Button>
-            </div>
+          <div className="md:hidden pb-4 pt-2 border-t border-gray-200">
+            <NavigationLinks
+              isOpen={true}
+              className="flex-col gap-2"
+              onItemClick={() => setMobileMenuOpen(false)}
+            />
           </div>
         )}
       </div>
+      
+      {/* Subtle Bottom Border Glow */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200/50 to-transparent" />
     </header>
   )
 }
