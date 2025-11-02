@@ -34,11 +34,21 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
   const selectedImage = images[selectedIndex]
 
   const handlePrevious = () => {
-    setSelectedIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
+    setSelectedIndex((prev) => {
+      console.log('Previous clicked, current index:', prev)
+      const newIndex = prev === 0 ? images.length - 1 : prev - 1
+      console.log('New index will be:', newIndex)
+      return newIndex
+    })
   }
 
   const handleNext = () => {
-    setSelectedIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
+    setSelectedIndex((prev) => {
+      console.log('Next clicked, current index:', prev)
+      const newIndex = prev === images.length - 1 ? 0 : prev + 1
+      console.log('New index will be:', newIndex)
+      return newIndex
+    })
   }
 
   return (
@@ -49,7 +59,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
           src={selectedImage.url}
           alt={selectedImage.alt}
           fill
-          className="object-cover group-hover:scale-105 transition-transform duration-300"
+          className="object-contain group-hover:scale-105 transition-transform duration-300"
           priority
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />

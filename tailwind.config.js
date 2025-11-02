@@ -11,8 +11,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'lateef': ['Lateef', 'serif'],
-        'aqsa': ['DG Aqsa', 'serif'],
+        'lateef': ['Amiri', 'serif'],
+        'aqsa': ['Scheherazade New', 'serif'],
         'ibm': ['IBM Plex Sans Arabic', 'system-ui', 'sans-serif'],
         sans: ['IBM Plex Sans Arabic', ...fontFamily.sans],
       },

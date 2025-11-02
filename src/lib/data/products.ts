@@ -11,23 +11,23 @@ export const PRODUCTS: Product[] = [
     name: "Huion 1060P - جهاز الرسم التعليمي",
     brand: "Huion",
     category: "display-tablets",
-    price: 1500,
+    price: 3650,
     description:
       "جهاز رسم تفاعلي متقدم مع شاشة عرض ملونة واضحة، مثالي للطلاب والمحترفين. يدعم 8192 مستوى ضغط للرسم الدقيق والسلس.",
     shortDescription: "جهاز رسم تعليمي احترافي بشاشة عرض",
     images: [
       {
-        url: "/images/products/huion/1060p/main.webp",
+        url: "/huion1060p/first.jpg",
         alt: "Huion 1060P - جهاز الرسم الرئيسي",
         order: 1,
       },
       {
-        url: "/images/products/huion/1060p/angle.webp",
+        url: "/huion1060p/second.png",
         alt: "Huion 1060P - منظور جانبي",
         order: 2,
       },
       {
-        url: "/images/products/huion/1060p/detail.webp",
+        url: "/huion1060p/third.jpeg",
         alt: "Huion 1060P - تفاصيل الجهاز",
         order: 3,
       },
@@ -55,23 +55,23 @@ export const PRODUCTS: Product[] = [
     name: "Huion HS611 - جهاز الرسم المحمول",
     brand: "Huion",
     category: "pen-tablets",
-    price: 800,
+    price: 4250,
     description:
       "جهاز رسم محمول خفيف الوزن مثالي للطلاب والفنانين المحترفين. يتميز بحساسية عالية وتوافق كامل مع جميع برامج الرسم الاحترافية.",
     shortDescription: "جهاز رسم محمول بحساسية عالية",
     images: [
       {
-        url: "/images/products/huion/hs611/main.webp",
+        url: "/hs611/first.jpg",
         alt: "Huion HS611 - جهاز الرسم الرئيسي",
         order: 1,
       },
       {
-        url: "/images/products/huion/hs611/side.webp",
+        url: "/hs611/second.jpeg",
         alt: "Huion HS611 - منظور جانبي",
         order: 2,
       },
       {
-        url: "/images/products/huion/hs611/use.webp",
+        url: "/hs611/third.jpeg",
         alt: "Huion HS611 - الاستخدام الفعلي",
         order: 3,
       },
@@ -99,23 +99,23 @@ export const PRODUCTS: Product[] = [
     name: "Casio FX-991ES Plus - الآلة الحاسبة العلمية",
     brand: "Casio",
     category: "calculators",
-    price: 200,
+    price: 500,
     description:
       "آلة حاسبة علمية متقدمة مع 417 دالة رياضية، مثالية لطلاب الهندسة والعلوم. تدعم العمليات الحسابية المعقدة والمصفوفات والإحصاء.",
     shortDescription: "آلة حاسبة علمية متقدمة للطلاب",
     images: [
       {
-        url: "/images/products/casio/fx991es-plus/main.webp",
+        url: "/991es/first.jpg",
         alt: "Casio FX-991ES Plus - الآلة الحاسبة الرئيسية",
         order: 1,
       },
       {
-        url: "/images/products/casio/fx991es-plus/display.webp",
+        url: "/991es/second.jpg",
         alt: "Casio FX-991ES Plus - شاشة العرض",
         order: 2,
       },
       {
-        url: "/images/products/casio/fx991es-plus/buttons.webp",
+        url: "/991es/third.jpg",
         alt: "Casio FX-991ES Plus - لوحة المفاتيح",
         order: 3,
       },

@@ -1,7 +1,6 @@
-import React from "react"
 import { Metadata } from "next"
 import Link from "next/link"
-import { ROUTES, formatPrice, SITE_NAME } from "@/lib/constants"
+import { ROUTES, formatPrice} from "@/lib/constants"
 import { getProductById, getAllProducts } from "@/lib/data/products"
 import { ImageGallery } from "@/components/products/ImageGallery"
 import { SpecTable } from "@/components/products/SpecTable"
@@ -31,7 +30,8 @@ export async function generateStaticParams() {
  * Generate metadata for product page
  */
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const product = getProductById(params.id)
+  const { id } = await params
+  const product = getProductById(id)
 
   if (!product) {
     return {
@@ -54,8 +54,9 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 /**
  * Product Detail Page
  */
-export default function ProductPage({ params }: ProductPageProps) {
-  const product = getProductById(params.id)
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { id } = await params
+  const product = getProductById(id)
 
   if (!product) {
     return (

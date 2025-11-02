@@ -33,24 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl">
-      <head>
-        {/* Preload Arabic fonts */}
-        <link
-          rel="preload"
-          href="/fonts/lateef/Lateef-Regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/dg-aqsa/DG-Aqsa.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-      </head>
-      <body className="font-arabic bg-white text-gray-900">
+      <body className="font-ibm bg-white text-gray-900">
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />

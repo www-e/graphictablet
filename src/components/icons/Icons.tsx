@@ -54,6 +54,7 @@ import {
   faWhatsapp as faWhatsappBrand,
   faInstagram as faInstagramBrand,
   faTwitter as faTwitterBrand,
+  faYoutube as faYoutubeBrand,
 } from "@fortawesome/free-brands-svg-icons"
 
 // ============================================
@@ -139,6 +140,7 @@ export const ICON_MAP = {
   whatsappBrand: faWhatsappBrand,
   instagramBrand: faInstagramBrand,
   twitterBrand: faTwitterBrand,
+  youtubeBrand: faYoutubeBrand,
 } as const
 
 /**
