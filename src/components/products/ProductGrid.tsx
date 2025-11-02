@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils/cn"
 
 interface ProductGridProps {
   products: Product[]
-  columns?: 2 | 3 | 4
   className?: string
 }
 
@@ -15,18 +14,12 @@ interface ProductGridProps {
  */
 export const ProductGrid: React.FC<ProductGridProps> = ({
   products,
-  columns = 3,
   className,
 }) => {
   return (
     <div
       className={cn(
-        "grid gap-4 md:gap-6",
-        {
-          "grid-cols-2": columns === 2,
-          "grid-cols-3": columns === 3,
-          "grid-cols-4": columns === 4,
-        },
+        "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6",
         className
       )}
     >

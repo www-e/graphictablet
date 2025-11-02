@@ -168,7 +168,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <ProductGrid products={featuredProducts} columns={3} />
+          <ProductGrid products={featuredProducts} />
         </div>
       </section>
 

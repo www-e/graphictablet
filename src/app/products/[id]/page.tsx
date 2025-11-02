@@ -249,7 +249,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                 منتجات أخرى قد تهمك
               </p>
             </div>
-            <ProductGrid products={relatedProducts} columns={2} />
+            <ProductGrid products={relatedProducts} />
           </section>
         )}
       </div>

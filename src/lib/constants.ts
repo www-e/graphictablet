@@ -32,7 +32,6 @@ export function generateWhatsAppLink(productName: string, productPrice: string):
 
 📱 المنتج: ${productName}
 💰 السعر: ${productPrice} جنيه
-🚚 الشحن: مجاني لجميع أنحاء مصر
 
 الرجاء التأكد من التوفر وإرسال طرق الدفع المتاحة
 
