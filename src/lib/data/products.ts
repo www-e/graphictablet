@@ -169,7 +169,7 @@ export const PRODUCTS: Product[] = [
     name: "Casio FX-991ES Plus - الآلة الحاسبة العلمية",
     brand: "Casio",
     category: "calculators",
-    price: 500,
+    price: 450,
     description:
       "آلة حاسبة علمية متقدمة مع 417 دالة رياضية، مثالية لطلاب الهندسة والعلوم. تدعم العمليات الحسابية المعقدة والمصفوفات والإحصاء.",
     shortDescription: "آلة حاسبة علمية متقدمة للطلاب",
