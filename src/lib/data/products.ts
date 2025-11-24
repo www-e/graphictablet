@@ -217,6 +217,85 @@ export const PRODUCTS: Product[] = [
     teacherFriendly: true,
     inStock: true,
   },
+
+  {
+    id: "huion-inspiroy-h950p",
+    name: "Huion Inspiroy H950P - جهاز الرسم كسر زيرو",
+    brand: "Huion",
+    category: "pen-tablets",
+    price: 3500,
+    description:
+      "جهاز رسم متطور بمساحة رسم 8.7×5.4 بوصة مع دعم 8192 مستوى ضغط وقلم بدون بطارية. مثالي للفنانين المبتدئين والمحترفين مع دعم تفاعلات الميل و8 أزرار مخصصة للتحكم السريع.",
+    shortDescription: "جهاز رسم مدمج بقلم بدون بطارية",
+    images: [
+      {
+        url: "/h950p/first.jpg",
+        alt: "Huion Inspiroy H950P - جهاز الرسم الرئيسي",
+        order: 1,
+      },
+      {
+        url: "/h950p/second.jpg",
+        alt: "Huion Inspiroy H950P - منظور جانبي",
+        order: 2,
+      },
+      {
+        url: "/h950p/third.jpg",
+        alt: "Huion Inspiroy H950P - تفاصيل القلم",
+        order: 3,
+      },
+    ],
+    specifications: [
+      { label: "مساحة العمل", value: "221 × 138 ملم (8.7 × 5.4 بوصة)" },
+      { label: "الأبعاد", value: "320.8 × 188.8 × 8 ملم" },
+      { label: "الوزن", value: "497 جرام" },
+      { label: "السُمك", value: "8 ملم" },
+      { label: "مستويات الضغط", value: "8192 مستوى" },
+      { label: "دقة القلم", value: "5080 LPI" },
+      { label: "معدل التقرير", value: "233 PPS" },
+      { label: "الاتصال", value: "Micro USB" },
+      { label: "الأزرار المبرمجة", value: "8 أزرار مخصصة" },
+      { label: "دعم الإمالة", value: "±60 درجة" },
+      { label: "ارتفاع الاستشعار", value: "10 ملم" },
+      { label: "القلم", value: "PW100 بدون بطارية" },
+      { label: "نوع السطح", value: "مطلي بالطيف" },
+    ],
+    keyFeatures: [
+      "جهاز رفيع بسُمك 8 ملم مع مساحة عمل 8.7×5.4 بوصة",
+      "قلم بدون بطارية PW100 مع دعم الإمالة ±60°",
+      "8 أزرار مخصصة للتحكم السريع والمهام المتكررة",
+      "دقة عالية 5080 LPI مع معدل تقرير 233 PPS",
+      "تصميم أنيق مع أزرار تنقل حديثة",
+      "دعم أنظمة التشغيل: Windows، macOS، Android 6.0+",
+      "مثالي للمبتدئين والمستخدمين المحترفين",
+      "متضمن مع الجهاز: قلم + 8 رؤوس إضافية + حامل القلم",
+    ],
+    freeDelivery: true,
+    deviceCompatibility: {
+      computers: {
+        windows: "Windows 7/8/8.1/10/11",
+        mac: "macOS 10.12 Sierra وإصدارات أحدث",
+        linux: "Ubuntu 16.04+ وCentOS 7+"
+      },
+      tablets: {
+        android: "Android 6.0+ مع دعم OTG",
+        ios: "iPad Pro مع محول Lightning to USB"
+      },
+      phones: {
+        android: "Android 6.0+ مع كابل OTG",
+        ios: "iPhone مع محول Lightning to USB (للتشغيل فقط)"
+      }
+    },
+    usageScenarios: [
+      "الرسم الرقمي والتصميم الإبداعي",
+      "التعليم عن بُعد وورش العمل الرقمية",
+      "التوقيع على المستندات إلكترونياً",
+      "الرسم التخطيطي والرسومات الهندسية",
+      "الاستخدام في المكاتب والمنازل",
+      "العمل الجوال في المطاعم الاحترافية"
+    ],
+    teacherFriendly: true,
+    inStock: true,
+  },
 ]
 
 /**
