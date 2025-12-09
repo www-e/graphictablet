@@ -11,7 +11,7 @@ export const PRODUCTS: Product[] = [
     name: "Huion 1060P - جهاز الرسم التفاعلي",
     brand: "Huion",
     category: "display-tablets",
-    price: 3650,
+    price: 4000,
     description:
       "جهاز رسم تفاعلي رقيق 10 ملم مع مساحة عمل كبيرة، يدعم 8192 مستوى ضغط للرسم الدقيق والسلس للمحترفين والطلاب.",
     shortDescription: "جهاز رسم تفاعلي احترافي بسماكة 10 ملم",
