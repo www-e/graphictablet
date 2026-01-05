@@ -339,7 +339,7 @@ export const PRODUCTS: Product[] = [
       "يقلل من مشاكل الظهر والرقبة الناتجة عن الجلوس الطويل",
       "مثالي للعمل عن بعد والدراسة عبر الإنترنت",
     ],
-    freeDelivery: true,
+    freeDelivery: false,
     deviceCompatibility: {
       computers: {
         windows: "جميع إصدارات Windows",

@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ROUTES } from "@/lib/constants"
 import { ProductGrid } from "@/components/products/ProductGrid"
 import { WhatsAppCTA } from "@/components/common/WhatsAppCTA"
@@ -23,34 +24,55 @@ export default function Home() {
             {/* Hero Content */}
             <div className="space-y-6 md:space-y-8 order-2 md:order-1">
               <div>
-                <h1 className="font-aqsa text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">
-                  أجهزة الرسم الجرافيكي
+                <div className="inline-block bg-gradient-to-r from-red-500 to-red-600 text-white text-sm font-bold px-3 py-1 rounded-full mb-2">
+                  عرض جديد
+                </div>
+                <h1 className="font-aqsa text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-2">
+                  حامل لاب توب معدني
                 </h1>
                 <p className="text-xl md:text-2xl text-blue-600 font-lateef">
-                  للمحترفين والطلاب
+                  مثالي لتحسين الوضعية
                 </p>
               </div>
 
               <p className="text-lg text-gray-700 leading-relaxed max-w-lg">
-                اكتشف أحدث أجهزة الرسم الجرافيكي والأدوات التعليمية من الماركات العالمية الموثوقة.
-                جودة عالية، أسعار منافسة، وخدمة عملاء متميزة.
+                حامل لاب توب معدني قوي ومتين مصمم خصيصًا لتحسين وضعية الجلوس أثناء العمل.
+                يساعد في رفع شاشة اللابتوب إلى مستوى العين مما يقلل من إجهاد الرقبة والظهر.
               </p>
+
+              {/* Price Display */}
+              <div className="space-y-2">
+                <div className="flex items-center gap-3">
+                  <span className="text-3xl md:text-4xl font-bold text-red-600">
+                    155 جنيه
+                  </span>
+                  <span className="text-lg text-gray-500 line-through">
+                    200 جنيه
+                  </span>
+                  <span className="bg-green-100 text-green-800 text-sm font-bold px-2 py-1 rounded">
+                    خصم 22%
+                  </span>
+                </div>
+                <div className="text-sm text-gray-600">
+                  العرض لفترة محدودة!
+                </div>
+              </div>
 
               {/* CTA Buttons */}
               <div className="flex flex-col md:flex-row gap-4">
-                <Link href={ROUTES.PRODUCTS}>
+                <Link href={ROUTES.PRODUCT_DETAIL("labtop-holder")}>
                   <Button
                     variant="primary"
                     size="lg"
                     icon="shoppingCart"
-                    className="w-full md:w-auto"
+                    className="w-full md:w-auto bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700"
                   >
-                    تصفح المنتجات
+                    اشتري الآن
                   </Button>
                 </Link>
                 <WhatsAppCTA
-                  productName="استفسار عام"
-                  productPrice={0}
+                  productName="حامل لاب توب معدني - مثالي لتحسين الوضعية"
+                  productPrice="155"
                   variant="link"
                   className="w-full md:w-auto justify-center"
                 />
@@ -75,32 +97,21 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Hero Image */}
+            {/* Hero Image - Laptop Holder */}
             <div className="order-1 md:order-2">
-              <div className="relative w-full aspect-square bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative w-full aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
-                <div className="h-full flex items-center justify-center p-8">
-                  <div className="text-center text-white space-y-6">
-                    <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto backdrop-blur-sm">
-                      <Icon name="grid" size="2xl" className="text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold">أجهزة الرسم الاحترافية</h3>
-                    <p className="text-blue-100 text-lg">
-                      للأعمال التعليمية والصحفية
-                    </p>
-                    <div className="flex items-center justify-center gap-4 pt-4">
-                      <div className="text-center">
-                        <p className="text-3xl font-bold">8192</p>
-                        <p className="text-sm text-blue-200">مستوى ضغط</p>
-                      </div>
-                      <div className="text-center">
-                        <p className="text-3xl font-bold">15.6</p>
-                        <p className="text-sm text-blue-200">بوصة شاشة</p>
-                      </div>
-                      <div className="text-center">
-                        <p className="text-3xl font-bold">USB</p>
-                        <p className="text-sm text-blue-200">اتصال</p>
-                      </div>
+                <div className="h-full flex items-center justify-center p-4">
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <Image
+                      src="/labtopholder/first.jpg"
+                      alt="حامل لاب توب معدني - الصورة الرئيسية"
+                      width={400}
+                      height={300}
+                      className="max-h-full max-w-full object-contain rounded-lg shadow-lg"
+                    />
+                    <div className="absolute -top-3 -right-3 bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full animate-pulse">
+                      جديد
                     </div>
                   </div>
                 </div>
