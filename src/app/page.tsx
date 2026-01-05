@@ -72,7 +72,7 @@ export default function Home() {
                 </Link>
                 <WhatsAppCTA
                   productName="حامل لاب توب معدني - مثالي لتحسين الوضعية"
-                  productPrice="155"
+                  productPrice={155}
                   variant="link"
                   className="w-full md:w-auto justify-center"
                 />
