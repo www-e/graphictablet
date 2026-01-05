@@ -155,9 +155,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className }) 
           <div className="flex items-center justify-between">
             <div>
               <p className="text-xs text-gray-500">السعر</p>
-              <p className="font-bold text-lg md:text-2xl text-blue-600">
-                {formatPrice(product.price)}
-              </p>
+              {product.originalPrice && product.originalPrice > product.price ? (
+                <div className="flex flex-col">
+                  <span className="font-bold text-lg md:text-2xl text-blue-600">
+                    {formatPrice(product.price)}
+                  </span>
+                  <span className="text-sm text-gray-500 line-through">
+                    {formatPrice(product.originalPrice)}
+                  </span>
+                </div>
+              ) : (
+                <p className="font-bold text-lg md:text-2xl text-blue-600">
+                  {formatPrice(product.price)}
+                </p>
+              )}
             </div>
             <Icon
               name="arrowLeft"

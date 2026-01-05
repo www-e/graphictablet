@@ -11,7 +11,7 @@ export const PRODUCTS: Product[] = [
     name: "Huion 1060P - جهاز الرسم التفاعلي",
     brand: "Huion",
     category: "display-tablets",
-    price: 4000,
+    price: 3800,
     description:
       "جهاز رسم تفاعلي رقيق 10 ملم مع مساحة عمل كبيرة، يدعم 8192 مستوى ضغط للرسم الدقيق والسلس للمحترفين والطلاب.",
     shortDescription: "جهاز رسم تفاعلي احترافي بسماكة 10 ملم",
@@ -23,7 +23,7 @@ export const PRODUCTS: Product[] = [
       },
       {
         url: "/huion1060p/second.png",
-        alt: "Huion 1060P - منظور جانبي",
+        alt: "Huion 1060P - منظر جانبي",
         order: 2,
       },
       {
@@ -89,7 +89,7 @@ export const PRODUCTS: Product[] = [
     name: "Huion HS611 - جهاز الرسم المحمول",
     brand: "Huion",
     category: "pen-tablets",
-    price: 4250,
+    price: 4150,
     description:
       "جهاز رسم محمول خفيف الوزن مثالي للطلاب والفنانين المحترفين. يتميز بحساسية عالية وتوافق كامل مع جميع برامج الرسم الاحترافية.",
     shortDescription: "جهاز رسم محمول بحساسية عالية",
@@ -101,7 +101,7 @@ export const PRODUCTS: Product[] = [
       },
       {
         url: "/hs611/second.jpeg",
-        alt: "Huion HS611 - منظور جانبي",
+        alt: "Huion HS611 - منظر جانبي",
         order: 2,
       },
       {
@@ -235,7 +235,7 @@ export const PRODUCTS: Product[] = [
       },
       {
         url: "/h950p/second.jpg",
-        alt: "Huion Inspiroy H950P - منظور جانبي",
+        alt: "Huion Inspiroy H950P - منظر جانبي",
         order: 2,
       },
       {
@@ -292,6 +292,75 @@ export const PRODUCTS: Product[] = [
       "الرسم التخطيطي والرسومات الهندسية",
       "الاستخدام في المكاتب والمنازل",
       "العمل الجوال في المطاعم الاحترافية"
+    ],
+    teacherFriendly: true,
+    inStock: true,
+  },
+  {
+    id: "labtop-holder",
+    name: "حامل لاب توب معدني - مثالي لتحسين الوضعية",
+    brand: "Generic",
+    category: "accessories",
+    price: 155,
+    originalPrice: 200,
+    description:
+      "حامل لاب توب معدني قوي ومتين مصمم خصيصًا لتحسين وضعية الجلوس أثناء العمل. يساعد في رفع شاشة اللابتوب إلى مستوى العين مما يقلل من إجهاد الرقبة والظهر. مثالي للمستخدمين الذين يقضون ساعات طويلة في العمل أو الدراسة.",
+    shortDescription: "حامل لابتوب معدني يحسن الوضعية ويدعم الجهاز",
+    images: [
+      {
+        url: "/labtopholder/first.jpg",
+        alt: "حامل لاب توب معدني - الصورة الرئيسية",
+        order: 1,
+      },
+      {
+        url: "/labtopholder/second.jpg",
+        alt: "حامل لاب توب معدني - منظور جانبي",
+        order: 2,
+      },
+      {
+        url: "/labtopholder/third.jpg",
+        alt: "حامل لاب توب معدني - الاستخدام الفعلي",
+        order: 3,
+      },
+    ],
+    specifications: [
+      { label: "المواد", value: "معدن قوي ومتين" },
+      { label: "الوزن", value: "خفيف الوزن وسهل الحمل" },
+      { label: "اللون", value: "فضي/أسود" },
+      { label: "الارتفاع القابل للتعديل", value: "نعم" },
+      { label: "التوافق", value: "جميع أحجام اللابتوب" },
+      { label: "نوع التثبيت", value: "مثبت بمسامير" },
+    ],
+    keyFeatures: [
+      "مصنوع من معدن قوي ومتين لدعم موثوق",
+      "يحسن من وضعية الجلوس ويقلل من إجهاد الرقبة",
+      "قابل للتعديل لتناسب مختلف أحجام اللابتوب",
+      "تصميم أنيق يناسب أي مكتب أو غرفة دراسة",
+      "يقلل من مشاكل الظهر والرقبة الناتجة عن الجلوس الطويل",
+      "مثالي للعمل عن بعد والدراسة عبر الإنترنت",
+    ],
+    freeDelivery: true,
+    deviceCompatibility: {
+      computers: {
+        windows: "جميع إصدارات Windows",
+        mac: "جميع إصدارات macOS",
+        linux: "جميع توزيعات Linux"
+      },
+      tablets: {
+        android: "غير مطلوب",
+        ios: "غير مطلوب"
+      },
+      phones: {
+        android: "غير مطلوب",
+        ios: "غير مطلوب"
+      }
+    },
+    usageScenarios: [
+      "مكاتب العمل والعمل من المنزل",
+      "غرف الدراسة والجامعات",
+      "استوديوهات التصميم والجرافيك",
+      "العمل الحر والمشاريع الشخصية",
+      "الجلوس لفترات طويلة امام الحاسوب"
     ],
     teacherFriendly: true,
     inStock: true,

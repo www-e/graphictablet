@@ -54,6 +54,7 @@ export const ProductSchema = z.object({
   brand: z.string().min(1, "Brand required"), // e.g., "Huion"
   category: z.string().min(1, "Category required"), // e.g., "display-tablets"
   price: z.number().positive("Price must be positive"),
+  originalPrice: z.number().positive("Original price must be positive").optional(),
   description: z.string().min(10, "Description too short"), // 1-2 sentences Arabic
   shortDescription: z.string().min(5, "Short description too short"), // For product cards
   images: z.array(ProductImageSchema).min(1, "At least 1 image required"),
