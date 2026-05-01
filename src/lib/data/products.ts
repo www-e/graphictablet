@@ -1,11 +1,10 @@
-import { Product } from "./types"
-
 /**
  * Product Database (Static JSON)
  * All products displayed in the store
+ * Kept for seeding reference only
  */
 
-export const PRODUCTS: Product[] = [
+export const PRODUCTS = [
   {
     id: "huion-1060p",
     name: "Huion 1060P - جهاز الرسم التفاعلي",
@@ -17,17 +16,20 @@ export const PRODUCTS: Product[] = [
     shortDescription: "جهاز رسم تفاعلي احترافي بسماكة 10 ملم",
     images: [
       {
-        url: "/huion1060p/first.jpg",
+        data: "path:/huion1060p/first.jpg",
+        mimeType: "image/jpeg",
         alt: "Huion 1060P - جهاز الرسم الرئيسي",
         order: 1,
       },
       {
-        url: "/huion1060p/second.png",
+        data: "path:/huion1060p/second.png",
+        mimeType: "image/png",
         alt: "Huion 1060P - منظر جانبي",
         order: 2,
       },
       {
-        url: "/huion1060p/third.jpeg",
+        data: "path:/huion1060p/third.jpeg",
+        mimeType: "image/jpeg",
         alt: "Huion 1060P - تفاصيل الجهاز",
         order: 3,
       },
@@ -95,17 +97,20 @@ export const PRODUCTS: Product[] = [
     shortDescription: "جهاز رسم محمول بحساسية عالية",
     images: [
       {
-        url: "/hs611/first.jpg",
+        data: "path:/hs611/first.jpg",
+        mimeType: "image/jpeg",
         alt: "Huion HS611 - جهاز الرسم الرئيسي",
         order: 1,
       },
       {
-        url: "/hs611/second.jpeg",
+        data: "path:/hs611/second.jpeg",
+        mimeType: "image/jpeg",
         alt: "Huion HS611 - منظر جانبي",
         order: 2,
       },
       {
-        url: "/hs611/third.jpeg",
+        data: "path:/hs611/third.jpeg",
+        mimeType: "image/jpeg",
         alt: "Huion HS611 - الاستخدام الفعلي",
         order: 3,
       },
@@ -175,17 +180,20 @@ export const PRODUCTS: Product[] = [
     shortDescription: "آلة حاسبة علمية متقدمة للطلاب",
     images: [
       {
-        url: "/991es/first.jpg",
+        data: "path:/991es/first.jpg",
+        mimeType: "image/jpeg",
         alt: "Casio FX-991ES Plus - الآلة الحاسبة الرئيسية",
         order: 1,
       },
       {
-        url: "/991es/second.jpg",
+        data: "path:/991es/second.jpg",
+        mimeType: "image/jpeg",
         alt: "Casio FX-991ES Plus - شاشة العرض",
         order: 2,
       },
       {
-        url: "/991es/third.jpg",
+        data: "path:/991es/third.jpg",
+        mimeType: "image/jpeg",
         alt: "Casio FX-991ES Plus - لوحة المفاتيح",
         order: 3,
       },
@@ -229,17 +237,20 @@ export const PRODUCTS: Product[] = [
     shortDescription: "جهاز رسم مدمج بقلم بدون بطارية",
     images: [
       {
-        url: "/h950p/first.jpg",
+        data: "path:/h950p/first.jpg",
+        mimeType: "image/jpeg",
         alt: "Huion Inspiroy H950P - جهاز الرسم الرئيسي",
         order: 1,
       },
       {
-        url: "/h950p/second.jpg",
+        data: "path:/h950p/second.jpg",
+        mimeType: "image/jpeg",
         alt: "Huion Inspiroy H950P - منظر جانبي",
         order: 2,
       },
       {
-        url: "/h950p/third.jpg",
+        data: "path:/h950p/third.jpg",
+        mimeType: "image/jpeg",
         alt: "Huion Inspiroy H950P - تفاصيل القلم",
         order: 3,
       },
@@ -308,17 +319,20 @@ export const PRODUCTS: Product[] = [
     shortDescription: "حامل لابتوب معدني يحسن الوضعية ويدعم الجهاز",
     images: [
       {
-        url: "/labtopholder/first.jpg",
+        data: "path:/labtopholder/first.jpg",
+        mimeType: "image/jpeg",
         alt: "حامل لاب توب معدني - الصورة الرئيسية",
         order: 1,
       },
       {
-        url: "/labtopholder/second.jpg",
+        data: "path:/labtopholder/second.jpg",
+        mimeType: "image/jpeg",
         alt: "حامل لاب توب معدني - منظور جانبي",
         order: 2,
       },
       {
-        url: "/labtopholder/third.jpg",
+        data: "path:/labtopholder/third.jpg",
+        mimeType: "image/jpeg",
         alt: "حامل لاب توب معدني - الاستخدام الفعلي",
         order: 3,
       },
@@ -370,34 +384,25 @@ export const PRODUCTS: Product[] = [
 /**
  * Get all products
  */
-export function getAllProducts(): Product[] {
+export function getAllProducts() {
   return PRODUCTS
 }
 
-/**
- * Get single product by ID
- */
-export function getProductById(id: string): Product | undefined {
-  return PRODUCTS.find((product) => product.id === id)
+export function getProductById(id: string) {
+  return PRODUCTS.find((product) => (product as { id: string }).id === id)
 }
 
-/**
- * Get products by category
- */
-export function getProductsByCategory(category: string): Product[] {
-  return PRODUCTS.filter((product) => product.category === category)
+export function getProductsByCategory(category: string) {
+  return PRODUCTS.filter((product) => (product as { category: string }).category === category)
 }
 
-/**
- * Get products by brand
- */
-export function getProductsByBrand(brand: string): Product[] {
-  return PRODUCTS.filter((product) => product.brand === brand)
+export function getProductsByBrand(brand: string) {
+  return PRODUCTS.filter((product) => (product as { brand: string }).brand === brand)
 }
 
-/**
- * Filter products by price range
- */
-export function filterByPriceRange(minPrice: number, maxPrice: number): Product[] {
-  return PRODUCTS.filter((product) => product.price >= minPrice && product.price <= maxPrice)
+export function filterByPriceRange(minPrice: number, maxPrice: number) {
+  return PRODUCTS.filter((product) => {
+    const p = product as { price: number }
+    return p.price >= minPrice && p.price <= maxPrice
+  })
 }

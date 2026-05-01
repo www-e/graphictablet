@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Product } from "@/lib/data/types"
+import { getImageSrc } from "@/lib/image-utils"
 import { ROUTES, formatPrice } from "@/lib/constants"
 import { Card, CardBody, CardFooter } from "@/components/common/Card"
 import { Badge } from "@/components/common/Badge"
@@ -48,7 +49,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className }) 
   }
 
   return (
-    <Link href={ROUTES.PRODUCT_DETAIL(product.id)}>
+    <Link href={ROUTES.PRODUCT_DETAIL(product.slug)}>
       <Card
         hover
         className={cn("h-full cursor-pointer overflow-hidden flex flex-col", className)}
@@ -56,7 +57,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, className }) 
         {/* Image Container */}
         <div className="relative w-full h-48 md:h-56 bg-gray-100 overflow-hidden">
           <Image
-            src={product.images[selectedImageIndex].url}
+            src={getImageSrc(product.images[selectedImageIndex])}
             alt={product.images[selectedImageIndex].alt}
             fill
             className="object-cover group-hover:scale-110 transition-transform duration-300"

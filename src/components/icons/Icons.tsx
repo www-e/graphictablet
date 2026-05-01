@@ -41,6 +41,8 @@ import {
   faCog,
   faBell,
   faClock,
+  faPlus,
+  faLock,
   IconDefinition,
 } from "@fortawesome/free-solid-svg-icons"
 import {
@@ -64,7 +66,7 @@ import {
 interface IconProps extends Omit<FontAwesomeIconProps, "icon" | "size"> {
   name: keyof typeof ICON_MAP
   size?: "xs" | "sm" | "base" | "lg" | "xl" | "2xl"
-  variant?: "default" | "primary" | "success" | "error" | "warning" | "info"
+  variant?: "default" | "primary" | "success" | "error" | "warning" | "info" | "muted"
   animated?: boolean
   className?: string
 }
@@ -127,6 +129,10 @@ export const ICON_MAP = {
   settings: faCog,
   notification: faBell,
   clock: faClock,
+  lock: faLock,
+
+  // Actions
+  plus: faPlus,
 
   // Social (Solid)
   facebook: faFacebook,
@@ -165,6 +171,7 @@ const VARIANT_MAP: Record<string, string> = {
   error: "text-red-600",
   warning: "text-yellow-600",
   info: "text-blue-500",
+  muted: "text-gray-300",
 }
 
 /**

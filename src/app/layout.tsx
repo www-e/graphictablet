@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
+import { TRPCProvider } from "@/components/providers/TRPCProvider"
 import type { Metadata } from "next"
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants"
 import "./globals.css"
@@ -34,9 +35,11 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className="font-ibm bg-white text-gray-900">
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <TRPCProvider>
+          <Header />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+        </TRPCProvider>
       </body>
     </html>
   )

@@ -1,16 +1,22 @@
-import { initTRPC } from "@trpc/server"
+import { initTRPC, TRPCError } from "@trpc/server"
+import type { Admin } from "@/server/schema"
 
-/**
- * TRPC Initialization
- * Sets up the tRPC server with error formatting
- */
+interface Context {
+  admin: Admin | null
+}
 
-export const t = initTRPC.create()
+const t = initTRPC.context<Context>().create()
 
-/**
- * Export reusable router and procedure helpers
- */
 export const router = t.router
 export const publicProcedure = t.procedure
+
+export const adminProcedure = t.procedure.use(
+  t.middleware(({ ctx, next }) => {
+    if (!ctx.admin) {
+      throw new TRPCError({ code: "UNAUTHORIZED", message: "يجب تسجيل الدخول كمسؤول" })
+    }
+    return next({ ctx: { admin: ctx.admin } })
+  })
+)
 
 export default t

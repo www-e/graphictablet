@@ -1,78 +1,62 @@
 import { z } from "zod"
 
-/**
- * Product Specification
- * Individual spec item (e.g., "Pressure Levels: 8192")
- */
-export const ProductSpecSchema = z.object({
-  label: z.string().min(1, "Label required"), // e.g., "الدقة"
-  value: z.string().min(1, "Value required"), // e.g., "1920x1080"
-})
-
-export type ProductSpec = z.infer<typeof ProductSpecSchema>
-
-/**
- * Product Image
- * Stores image path and alt text
- */
 export const ProductImageSchema = z.object({
-  url: z.string().url("Invalid image URL"),
-  alt: z.string().min(1, "Alt text required"),
+  data: z.string().min(1, "صورة مطلوبة"),
+  mimeType: z.string().default("image/jpeg"),
+  alt: z.string().min(1, "وصف الصورة مطلوب"),
   order: z.number().int().positive().optional(),
 })
 
 export type ProductImage = z.infer<typeof ProductImageSchema>
 
-/**
- * Device Compatibility Schema
- */
+export const ProductSpecSchema = z.object({
+  label: z.string().min(1, "اسم المواصفة مطلوب"),
+  value: z.string().min(1, "قيمة المواصفة مطلوبة"),
+})
+
+export type ProductSpec = z.infer<typeof ProductSpecSchema>
+
 export const DeviceCompatibilitySchema = z.object({
   computers: z.object({
-    windows: z.string(),
-    mac: z.string(),
+    windows: z.string().optional(),
+    mac: z.string().optional(),
     linux: z.string().optional(),
   }).optional(),
   tablets: z.object({
-    android: z.string(),
-    ios: z.string(),
+    android: z.string().optional(),
+    ios: z.string().optional(),
   }).optional(),
   phones: z.object({
-    android: z.string(),
-    ios: z.string(),
+    android: z.string().optional(),
+    ios: z.string().optional(),
   }).optional(),
 })
 
 export type DeviceCompatibility = z.infer<typeof DeviceCompatibilitySchema>
 
-/**
- * Main Product Schema
- * Validates product data structure
- */
 export const ProductSchema = z.object({
-  id: z.string().min(1, "ID required"),
-  name: z.string().min(1, "Product name required"), // Arabic name
-  brand: z.string().min(1, "Brand required"), // e.g., "Huion"
-  category: z.string().min(1, "Category required"), // e.g., "display-tablets"
-  price: z.number().positive("Price must be positive"),
-  originalPrice: z.number().positive("Original price must be positive").optional(),
-  description: z.string().min(10, "Description too short"), // 1-2 sentences Arabic
-  shortDescription: z.string().min(5, "Short description too short"), // For product cards
-  images: z.array(ProductImageSchema).min(1, "At least 1 image required"),
-  specifications: z.array(ProductSpecSchema).min(3, "At least 3 specs required"),
-  keyFeatures: z.array(z.string()).min(2, "At least 2 key features"), // Max 3 bullets
+  id: z.number(),
+  slug: z.string().min(1, "المعرف مطلوب"),
+  name: z.string().min(1, "اسم المنتج مطلوب"),
+  brand: z.string().min(1, "العلامة التجارية مطلوبة"),
+  category: z.string().min(1, "التصنيف مطلوب"),
+  price: z.number().positive("السعر يجب أن يكون أكبر من صفر"),
+  originalPrice: z.number().positive().nullable().optional(),
+  description: z.string().min(10, "الوصف قصير جداً"),
+  shortDescription: z.string().min(5, "الوصف المختصر قصير جداً"),
+  images: z.array(ProductImageSchema).min(1, "صورة واحدة على الأقل"),
+  specifications: z.array(ProductSpecSchema).min(1, "مواصفة واحدة على الأقل"),
+  keyFeatures: z.array(z.string()).min(1, "ميزة واحدة على الأقل"),
   freeDelivery: z.boolean().default(false),
-  deviceCompatibility: DeviceCompatibilitySchema.optional(),
-  usageScenarios: z.array(z.string()).optional(),
+  deviceCompatibility: DeviceCompatibilitySchema.nullable().optional(),
+  usageScenarios: z.array(z.string()).nullable().optional(),
   teacherFriendly: z.boolean().default(false),
   inStock: z.boolean().default(true),
-  createdAt: z.date().optional(),
+  createdAt: z.union([z.date(), z.string()]).optional(),
 })
 
 export type Product = z.infer<typeof ProductSchema>
 
-/**
- * Product Filter/Sort Options
- */
 export const ProductFilterSchema = z.object({
   category: z.string().optional(),
   brand: z.string().optional(),
@@ -83,9 +67,6 @@ export const ProductFilterSchema = z.object({
 
 export type ProductFilter = z.infer<typeof ProductFilterSchema>
 
-/**
- * Validation helper
- */
 export function validateProduct(data: unknown): Product {
   return ProductSchema.parse(data)
 }

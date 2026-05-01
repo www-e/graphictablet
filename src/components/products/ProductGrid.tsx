@@ -24,7 +24,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
       )}
     >
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard key={product.slug} product={product} />
       ))}
     </div>
   )

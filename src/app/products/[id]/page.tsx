@@ -2,8 +2,8 @@
 
 import Link from "next/link"
 import { use } from "react"
-import { ROUTES, formatPrice} from "@/lib/constants"
-import { getProductById, getAllProducts } from "@/lib/data/products"
+import { trpc } from "@/lib/trpc/client"
+import { ROUTES, formatPrice } from "@/lib/constants"
 import { ImageGallery } from "@/components/products/ImageGallery"
 import { SpecTable } from "@/components/products/SpecTable"
 import { ProductGrid } from "@/components/products/ProductGrid"
@@ -20,12 +20,36 @@ interface ProductPageProps {
   }>
 }
 
-/**
- * Product Detail Page - Client Component
- */
 export default function ProductPage({ params }: ProductPageProps) {
   const { id } = use(params)
-  const product = getProductById(id)
+  const { data: product, isLoading } = trpc.products.getById.useQuery({ id })
+  const { data: allProducts } = trpc.products.getAll.useQuery()
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: product?.name ?? "",
+          text: product?.description ?? "",
+          url: window.location.href,
+        })
+      } catch {
+        navigator.clipboard.writeText(window.location.href)
+        alert("تم نسخ الرابط!")
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href)
+      alert("تم نسخ الرابط!")
+    }
+  }
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin" />
+      </div>
+    )
+  }
 
   if (!product) {
     return (
@@ -42,29 +66,8 @@ export default function ProductPage({ params }: ProductPageProps) {
     )
   }
 
-  const handleShare = async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: product.name,
-          text: product.description,
-          url: window.location.href,
-        })
-      } catch (error) {
-        // Fallback to clipboard
-        navigator.clipboard.writeText(window.location.href)
-        alert("تم نسخ الرابط!")
-      }
-    } else {
-      // Fallback for browsers that don't support Web Share API
-      navigator.clipboard.writeText(window.location.href)
-      alert("تم نسخ الرابط!")
-    }
-  }
-
-  // Get related products (same category)
-  const relatedProducts = getAllProducts()
-    .filter((p) => p.category === product.category && p.id !== product.id)
+  const relatedProducts = (allProducts ?? [])
+    .filter((p) => p.category === product.category && p.slug !== product.slug)
     .slice(0, 4)
 
   return (
@@ -162,7 +165,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                 <WhatsAppCTA
                   productName={product.name}
                   productPrice={product.price}
-                  productId={product.id}
+                  productId={product.slug}
                   variant="button"
                   size="lg"
                   fullWidth

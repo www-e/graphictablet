@@ -5,15 +5,17 @@ import { ProductGrid } from "@/components/products/ProductGrid"
 import { WhatsAppCTA } from "@/components/common/WhatsAppCTA"
 import { Button } from "@/components/common/Button"
 import { Icon } from "@/components/icons/Icons"
-import { getAllProducts } from "@/lib/data/products"
+import { db } from "@/server/db"
+import { products } from "@/server/schema"
+import { desc } from "drizzle-orm"
 
-/**
- * Homepage
- * Hero section + featured products
- */
-export default function Home() {
-  const allProducts = getAllProducts()
-  const featuredProducts = allProducts.slice(0, 6)
+export default async function Home() {
+  const allProducts = await db.query.products.findMany({
+    with: { images: true, specifications: true },
+    orderBy: desc(products.createdAt),
+  })
+
+  const featuredProducts = allProducts.filter((p) => p.inStock).slice(0, 6)
 
   return (
     <>

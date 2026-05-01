@@ -1,61 +1,58 @@
 "use client"
 
 import React, { useState, useMemo } from "react"
-import { getAllProducts } from "@/lib/data/products"
-import { PRODUCT_CATEGORIES } from "@/lib/constants"
+import { trpc } from "@/lib/trpc/client"
 import { ProductGrid } from "@/components/products/ProductGrid"
-import { Button } from "@/components/common/Button"
 import { Icon } from "@/components/icons/Icons"
-import { cn } from "@/lib/utils/cn"
+import { FilterSidebar } from "@/components/products/FilterSidebar"
 
-import { FilterSidebar } from "@/components/products/FilterSidebar";
-
-/**
- * Products Listing Page
- * Display all products with filtering and sorting
- */
 export default function ProductsPage() {
-  const allProducts = getAllProducts();
+  const { data: allProducts, isLoading } = trpc.products.getAll.useQuery()
 
-  // Filter & Sort State
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
-  const [sortBy, setSortBy] = useState<"name" | "price-asc" | "price-desc">("name");
-  const [showFilters, setShowFilters] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const [selectedBrand, setSelectedBrand] = useState<string | null>(null)
+  const [sortBy, setSortBy] = useState<"name" | "price-asc" | "price-desc">("name")
+  const [showFilters, setShowFilters] = useState(false)
 
-  // Get unique brands
-  const brands = [...new Set(allProducts.map((p) => p.brand))];
+  const brands = useMemo(
+    () => [...new Set((allProducts ?? []).map((p) => p.brand))],
+    [allProducts]
+  )
 
-  // Filter & Sort Logic
   const filteredProducts = useMemo(() => {
-    let products = [...allProducts];
+    let products = [...(allProducts ?? [])]
 
-    // Filter by category
     if (selectedCategory) {
-      products = products.filter((p) => p.category === selectedCategory);
+      products = products.filter((p) => p.category === selectedCategory)
     }
 
-    // Filter by brand
     if (selectedBrand) {
-      products = products.filter((p) => p.brand === selectedBrand);
+      products = products.filter((p) => p.brand === selectedBrand)
     }
 
-    // Sort
     if (sortBy === "price-asc") {
-      products.sort((a, b) => a.price - b.price);
+      products.sort((a, b) => a.price - b.price)
     } else if (sortBy === "price-desc") {
-      products.sort((a, b) => b.price - a.price);
+      products.sort((a, b) => b.price - a.price)
     } else {
-      products.sort((a, b) => a.name.localeCompare(b.name, "ar"));
+      products.sort((a, b) => a.name.localeCompare(b.name, "ar"))
     }
 
-    return products;
-  }, [selectedCategory, selectedBrand, sortBy]);
+    return products
+  }, [allProducts, selectedCategory, selectedBrand, sortBy])
 
   const onClearFilters = () => {
-    setSelectedCategory(null);
-    setSelectedBrand(null);
-  };
+    setSelectedCategory(null)
+    setSelectedBrand(null)
+  }
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin" />
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -107,5 +104,5 @@ export default function ProductsPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }

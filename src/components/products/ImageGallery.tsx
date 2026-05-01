@@ -3,6 +3,7 @@
 import React, { useState } from "react"
 import Image from "next/image"
 import { ProductImage } from "@/lib/data/types"
+import { getImageSrc } from "@/lib/image-utils"
 import { Icon } from "@/components/icons/Icons"
 import { cn } from "@/lib/utils/cn"
 
@@ -54,7 +55,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
       {/* Main Image Display */}
       <div className="relative w-full aspect-square bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl overflow-hidden group shadow-sm">
         <Image
-          src={selectedImage.url}
+          src={getImageSrc(selectedImage)}
           alt={selectedImage.alt}
           fill
           className="object-contain group-hover:scale-105 transition-transform duration-300"
@@ -137,7 +138,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
               type="button"
             >
               <Image
-                src={image.url}
+                src={getImageSrc(image)}
                 alt={`${productName} - صورة ${idx + 1}`}
                 fill
                 className="object-cover"
