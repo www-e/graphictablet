@@ -42,6 +42,7 @@ interface ProductFormData {
   inStock: boolean
   keyFeatures: string[]
   usageScenarios: string[]
+  deviceCompatibility: Record<string, unknown>
   images: { data: string; mimeType: string; alt: string; order: number }[]
   specifications: { label: string; value: string }[]
 }
@@ -71,6 +72,7 @@ const emptyForm: ProductFormData = {
   inStock: true,
   keyFeatures: [""],
   usageScenarios: [""],
+  deviceCompatibility: {},
   images: [],
   specifications: [{ label: "", value: "" }],
 }
