@@ -1,4 +1,5 @@
 import { router, publicProcedure } from "@/lib/trpc/init"
+import { TRPCError } from "@trpc/server"
 import { z } from "zod"
 import { db } from "@/server/db"
 import { products } from "@/server/schema"
@@ -20,7 +21,7 @@ export const productsRouter = router({
         with: { images: true, specifications: true },
       })
       if (!product) {
-        throw new Error(`المنتج "${input.id}" غير موجود`)
+        throw new TRPCError({ code: "NOT_FOUND", message: `المنتج "${input.id}" غير موجود` })
       }
       return product
     }),
