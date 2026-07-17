@@ -32,7 +32,8 @@ export default function AdminSignInPage() {
         return
       }
 
-      router.push("/admin/panel")
+      // Use hard navigation so the auth cookie is guaranteed to be sent
+      window.location.href = "/admin/panel"
     } catch {
       setError("حدث خطأ غير متوقع")
       setLoading(false)
@@ -65,7 +66,7 @@ export default function AdminSignInPage() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-right"
-                placeholder="admin"
+                placeholder="ashraf"
                 dir="rtl"
                 required
               />

@@ -20,7 +20,6 @@ export const NavigationLinks: React.FC<NavigationProps> = ({ isOpen = true, clas
   const navItems = [
     { label: "الرئيسية", href: ROUTES.HOME },
     { label: "المنتجات", href: ROUTES.PRODUCTS },
-    { label: "لوحة التحكم", href: "/admin/panel" },
   ]
 
   return (

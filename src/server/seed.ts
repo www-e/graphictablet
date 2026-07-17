@@ -8,15 +8,15 @@ async function seed() {
   console.log("🌱 Seeding database...")
 
   // 1. Seed admin
-  const adminPasswordHash = await bcrypt.hash("admin123", 12)
+  const adminPasswordHash = await bcrypt.hash("ashraf123", 12)
   await db
     .insert(admins)
     .values({
-      username: "admin",
+      username: "ashraf",
       passwordHash: adminPasswordHash,
     })
     .onConflictDoNothing({ target: admins.username })
-  console.log("✅ Admin seeded (admin / admin123)")
+  console.log("✅ Admin seeded (ashraf / ashraf123)")
 
   // 2. Seed products
   for (const p of PRODUCTS) {
